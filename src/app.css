@@ -1,0 +1,61 @@
+:root {
+	--cyan: #00f0ff;
+	--magenta: #ff2a6d;
+	--yellow: #f9f002;
+	--dark-bg: #0a0a0f;
+	--dark-card: #0d0d1a;
+	--dark-card-alt: #12122a;
+	--text-primary: #e0e0ff;
+	--text-muted: #7a7a9e;
+	--border-glow: rgba(0, 240, 255, 0.3);
+	--font-display: 'Orbitron', sans-serif;
+	--font-mono: 'Share Tech Mono', monospace;
+	--font-body: 'Rajdhani', sans-serif;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background: var(--dark-bg);
+	color: var(--text-primary);
+	font-family: var(--font-body);
+	overflow-x: hidden;
+	line-height: 1.6;
+}
+
+::selection {
+	background: var(--cyan);
+	color: var(--dark-bg);
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--cyan);
+	border-radius: 3px;
+}
+
+a {
+	color: var(--cyan);
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+a:hover {
+	color: var(--magenta);
+	text-shadow: 0 0 10px var(--magenta);
+}
