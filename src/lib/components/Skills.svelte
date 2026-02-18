@@ -166,7 +166,25 @@
 
 	.skill-card:hover {
 		border-color: var(--cyan);
-		box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
+		box-shadow:
+			0 0 30px rgba(0, 240, 255, 0.2),
+			0 0 60px rgba(0, 240, 255, 0.05),
+			inset 0 0 40px rgba(0, 240, 255, 0.03);
+		background: linear-gradient(
+			135deg,
+			rgba(0, 240, 255, 0.06) 0%,
+			rgba(255, 42, 109, 0.04) 33%,
+			rgba(249, 240, 2, 0.03) 66%,
+			rgba(0, 240, 255, 0.06) 100%
+		);
+		background-size: 300% 300%;
+		animation: slideUp 0.6s ease both, holographic 3s linear infinite;
+	}
+
+	@keyframes holographic {
+		0% { background-position: 0% 50%; }
+		50% { background-position: 100% 50%; }
+		100% { background-position: 0% 50%; }
 	}
 
 	.card-corner {

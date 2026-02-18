@@ -2,9 +2,10 @@
 	--cyan: #00f0ff;
 	--magenta: #ff2a6d;
 	--yellow: #f9f002;
-	--dark-bg: #0a0a0f;
-	--dark-card: #0d0d1a;
-	--dark-card-alt: #12122a;
+	--green: #00ff41;
+	--dark-bg: #06060d;
+	--dark-card: #0a0a18;
+	--dark-card-alt: #0f0f22;
 	--text-primary: #e0e0ff;
 	--text-muted: #7a7a9e;
 	--border-glow: rgba(0, 240, 255, 0.3);
@@ -31,13 +32,16 @@ body {
 	line-height: 1.6;
 }
 
+/* Slightly glowing text selection */
 ::selection {
-	background: var(--cyan);
-	color: var(--dark-bg);
+	background: rgba(0, 240, 255, 0.3);
+	color: #ffffff;
+	text-shadow: 0 0 10px var(--cyan);
 }
 
+/* Neon scrollbar */
 ::-webkit-scrollbar {
-	width: 6px;
+	width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -45,10 +49,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-	background: var(--cyan);
-	border-radius: 3px;
+	background: linear-gradient(180deg, var(--cyan), var(--magenta));
+	border-radius: 2px;
+	box-shadow: 0 0 6px var(--cyan);
 }
 
+/* Link neon glow */
 a {
 	color: var(--cyan);
 	text-decoration: none;
@@ -57,5 +63,32 @@ a {
 
 a:hover {
 	color: var(--magenta);
-	text-shadow: 0 0 10px var(--magenta);
+	text-shadow: 0 0 12px var(--magenta), 0 0 24px rgba(255, 42, 109, 0.3);
+}
+
+/* Global keyframe animations */
+@keyframes fadeInUp {
+	from { opacity: 0; transform: translateY(30px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0; }
+}
+
+@keyframes neon-pulse {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.7; }
+}
+
+/* Neon text utility */
+.neon-cyan {
+	color: var(--cyan);
+	text-shadow: 0 0 10px var(--cyan), 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+.neon-magenta {
+	color: var(--magenta);
+	text-shadow: 0 0 10px var(--magenta), 0 0 20px rgba(255, 42, 109, 0.3);
 }

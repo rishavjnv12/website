@@ -11,6 +11,7 @@
 	import ParticleBackground from '$lib/components/ParticleBackground.svelte';
 	import GlitchOverlay from '$lib/components/GlitchOverlay.svelte';
 	import ScanLines from '$lib/components/ScanLines.svelte';
+	import BootSequence from '$lib/components/BootSequence.svelte';
 
 	let mounted = $state(false);
 
@@ -19,6 +20,7 @@
 	});
 </script>
 
+<BootSequence />
 <ScanLines />
 <GlitchOverlay />
 <ParticleBackground />
