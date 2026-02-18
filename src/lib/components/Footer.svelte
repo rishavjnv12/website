@@ -6,7 +6,7 @@
 				<p class="tagline">Crafting digital experiences from the neon grid.</p>
 			</div>
 			<div class="footer-links">
-				<a href="https://linkedin.com/in/rishav-kumar" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+				<a href="https://www.linkedin.com/in/rishavjnv12/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
 				<a href="https://leetcode.com" target="_blank" rel="noopener noreferrer">LEETCODE</a>
 				<a href="https://codeforces.com" target="_blank" rel="noopener noreferrer">CODEFORCES</a>
 				<a href="https://github.com" target="_blank" rel="noopener noreferrer">GITHUB</a>
