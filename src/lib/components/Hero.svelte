@@ -57,7 +57,7 @@
 			</div>
 		</div>
 
-		<p class="tagline">Building pixel-perfect native experiences at <span class="highlight">Temple</span></p>
+		<p class="tagline">Building pixel-perfect native experiences at <a href="https://www.temple.com/" target="_blank" rel="noopener noreferrer" class="highlight cyber-link">Temple</a></p>
 
 		<div class="cta-group">
 			<a href="#contact" class="cta-primary">

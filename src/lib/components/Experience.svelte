@@ -8,6 +8,7 @@
 	const experiences = [
 		{
 			company: 'TEMPLE',
+			url: 'https://www.temple.com/',
 			role: 'iOS Developer',
 			period: 'JAN 2026 - PRESENT',
 			description: 'A startup by Deepinder Goyal, founder of Zomato.',
@@ -22,6 +23,7 @@
 		},
 		{
 			company: 'NAVI TECHNOLOGIES',
+			url: 'https://navi.com/',
 			role: 'SDE-II',
 			period: 'AUG 2024 - DEC 2025',
 			description: 'Centralized growth team - Homepage, Auth, KYC.',
@@ -37,6 +39,7 @@
 		},
 		{
 			company: 'NAVI TECHNOLOGIES',
+			url: 'https://navi.com/',
 			role: 'SDE-I',
 			period: 'SEP 2022 - JUL 2024',
 			description: 'Home Loans, AMC, UPI products.',
@@ -51,6 +54,7 @@
 		},
 		{
 			company: 'JOSH TECHNOLOGY GROUP',
+			url: '',
 			role: 'Software Development Engineer Intern',
 			period: 'FEB 2022 - AUG 2022',
 			description: 'Quicktest hiring platform.',
@@ -92,7 +96,13 @@
 					{#if activeIndex === i}
 						<div class="exp-detail" style="--accent: {exp.color}">
 							<div class="exp-header">
-								<h3>{exp.role} <span class="at">@ <span class="company">{exp.company}</span></span></h3>
+								<h3>{exp.role} <span class="at">@
+									{#if exp.url}
+										<a href={exp.url} target="_blank" rel="noopener noreferrer" class="company cyber-link">{exp.company}</a>
+									{:else}
+										<span class="company">{exp.company}</span>
+									{/if}
+								</span></h3>
 								<span class="exp-period">{exp.period}</span>
 							</div>
 							<p class="exp-desc">{exp.description}</p>

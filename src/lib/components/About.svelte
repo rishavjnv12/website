@@ -38,14 +38,14 @@
 						<br>
 						<p>Hey, I'm <span class="hl-cyan">Rishav Kumar</span> - an iOS developer who thrives on crafting
 						native mobile experiences that feel fluid and alive. Currently building at
-						<span class="hl-yellow">Temple</span>, a startup by <span class="hl-magenta">Deepinder Goyal</span>
+						<a href="https://www.temple.com/" target="_blank" rel="noopener noreferrer" class="hl-yellow cyber-link">Temple</a>, a startup by <span class="hl-magenta">Deepinder Goyal</span>
 						(founder of Zomato).</p>
 						<br>
 						<p>With <span class="hl-cyan">3+ years</span> of professional experience shipping production iOS apps,
 						I specialize in <span class="hl-yellow">Swift, UIKit, SwiftUI</span>, and modern architectures like
 						<span class="hl-magenta">MVVM</span> and <span class="hl-magenta">MVI</span>.</p>
 						<br>
-						<p>Previously at <span class="hl-cyan">Navi Technologies</span>, I built critical fintech flows -
+						<p>Previously at <a href="https://navi.com/" target="_blank" rel="noopener noreferrer" class="hl-cyan cyber-link">Navi Technologies</a>, I built critical fintech flows -
 						from KYC to Home Loans to CIBIL Score features - and mentored teams to deliver at scale.
 						I'm passionate about clean code, competitive programming, and pushing the boundaries of
 						what's possible on iOS.</p>

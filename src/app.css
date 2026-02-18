@@ -61,7 +61,8 @@ a {
 	transition: all 0.3s ease;
 }
 
-a:hover {
+/* Default link hover — excluded for .cyber-link which manages its own color */
+a:not(.cyber-link):hover {
 	color: var(--magenta);
 	text-shadow: 0 0 12px var(--magenta), 0 0 24px rgba(255, 42, 109, 0.3);
 }
@@ -91,4 +92,64 @@ a:hover {
 .neon-magenta {
 	color: var(--magenta);
 	text-shadow: 0 0 10px var(--magenta), 0 0 20px rgba(255, 42, 109, 0.3);
+}
+
+/* ─── Cyberpunk hyperlink ─────────────────────────────────────────────────── */
+/*
+ * Usage: add class="cyber-link" to any <a>.
+ * Color is inherited from parent (hl-cyan, hl-yellow, highlight, etc.).
+ * Effect: neon underline sweeps left→right, text flickers like a neon sign.
+ */
+.cyber-link {
+	position: relative;
+	text-decoration: none !important;
+	cursor: pointer;
+
+	/* Neon underline via background-size trick — works on inline elements */
+	background-image: linear-gradient(currentColor, currentColor);
+	background-repeat: no-repeat;
+	background-position: left bottom 1px;
+	background-size: 0% 1px;
+	padding-bottom: 1px;
+
+	transition:
+		background-size 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+		text-shadow 0.25s ease,
+		letter-spacing 0.25s ease,
+		filter 0.25s ease;
+}
+
+.cyber-link:hover {
+	/* Sweep the underline to full width */
+	background-size: 100% 1px;
+
+	/* Multi-layer neon glow */
+	text-shadow:
+		0 0 6px currentColor,
+		0 0 14px currentColor,
+		0 0 30px currentColor,
+		0 0 60px currentColor;
+
+	/* Slight letter-spacing = "powering up" feel */
+	letter-spacing: 0.04em;
+
+	/* Flicker animation mimicking a neon tube igniting */
+	animation: cyber-neon-ignite 0.5s ease both;
+}
+
+/* Active / click flash */
+.cyber-link:active {
+	filter: brightness(3) saturate(1.5);
+	transition: filter 0s;
+}
+
+@keyframes cyber-neon-ignite {
+	0%   { filter: brightness(1); }
+	12%  { filter: brightness(3) drop-shadow(0 0 4px currentColor); }
+	25%  { filter: brightness(1.2); }
+	40%  { filter: brightness(2.5) drop-shadow(0 0 8px currentColor); }
+	55%  { filter: brightness(1.3); }
+	70%  { filter: brightness(2) drop-shadow(0 0 6px currentColor); }
+	85%  { filter: brightness(1.4); }
+	100% { filter: brightness(1.5) drop-shadow(0 0 5px currentColor); }
 }
