@@ -59,7 +59,7 @@
 						</p>
 						<p class="info-line">
 							<span class="label">LINKEDIN:</span>
-							<a href="https://linkedin.com/in/rishav-kumar" target="_blank">/in/rishav-kumar</a>
+							<a href="https://www.linkedin.com/in/rishavjnv12/" target="_blank">/in/rishav-kumar</a>
 						</p>
 						<p class="info-line">
 							<span class="label">LOCATION:</span>
