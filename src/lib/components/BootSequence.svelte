@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	let visible = $state(true);
+	let visible = $state(false);
 	let screenOpacity = $state(1);
 	let lines = $state<{ text: string; color: string }[]>([]);
 	let progressWidth = $state(0);
@@ -20,6 +20,11 @@
 	];
 
 	onMount(() => {
+		// Only play on first load / refresh of the homepage
+		if (sessionStorage.getItem('boot-done')) return;
+		sessionStorage.setItem('boot-done', '1');
+		visible = true;
+
 		let i = 0;
 		const totalLines = bootLines.length;
 
