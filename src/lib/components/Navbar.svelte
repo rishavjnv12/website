@@ -5,11 +5,12 @@
 	let mobileOpen = $state(false);
 
 	const navLinks = [
-		{ label: 'ABOUT', href: '#about' },
-		{ label: 'EXPERIENCE', href: '#experience' },
-		{ label: 'SKILLS', href: '#skills' },
-		{ label: 'ACHIEVEMENTS', href: '#achievements' },
-		{ label: 'CONTACT', href: '#contact' }
+		{ label: 'ABOUT', href: '/#about' },
+		{ label: 'EXPERIENCE', href: '/#experience' },
+		{ label: 'SKILLS', href: '/#skills' },
+		{ label: 'ACHIEVEMENTS', href: '/#achievements' },
+		{ label: 'TOOLS', href: '/tools' },
+		{ label: 'CONTACT', href: '/#contact' }
 	];
 
 	onMount(() => {
@@ -25,7 +26,7 @@
 
 <nav class:scrolled>
 	<div class="nav-inner">
-		<a href="#hero" class="logo" onclick={handleNavClick}>
+		<a href="/#hero" class="logo" onclick={handleNavClick}>
 			<span class="logo-bracket">&lt;</span>RK<span class="logo-slash">/</span><span class="logo-bracket">&gt;</span>
 		</a>
 
