@@ -38,6 +38,18 @@
 			description: 'Generate placeholder text, random names, emails, phone numbers, and addresses for app testing.',
 			href: '/tools/test-data-generator',
 			icon: '🧪'
+		},
+		{
+			name: 'Wiki Explorer',
+			description: 'Discover random Wikipedia articles by genre. Pick a topic and explore science, history, space, mythology, and more.',
+			href: '/tools/wiki-explorer',
+			icon: '📚'
+		},
+		{
+			name: 'Virat Kohli',
+			description: 'Explore about the greatest cricketer of this generation, Virat Kohli. Check out his biography, stats, records, and achievements.',
+			href: '/tools/virat-kohli',
+			icon: '📚'
 		}
 	];
 </script>
