@@ -14,6 +14,30 @@
 			description: 'Convert between Unix timestamps and human-readable dates. Supports seconds, milliseconds, batch conversion, timezones, and more.',
 			href: '/tools/epoch-converter',
 			icon: '⏱'
+		},
+		{
+			name: 'JSON Formatter',
+			description: 'Paste, validate, format, and explore JSON. Syntax highlighting, collapsible tree view, minify, and download.',
+			href: '/tools/json-formatter',
+			icon: '{ }'
+		},
+		{
+			name: 'UUID Generator',
+			description: 'Generate v4 UUIDs instantly. Bulk generation, uppercase/lowercase, with or without hyphens. Copy or download.',
+			href: '/tools/uuid-generator',
+			icon: '#'
+		},
+		{
+			name: 'Color Converter',
+			description: 'Convert between HEX, RGB, HSL, and Swift UIColor / SwiftUI Color. Live preview and palette generation.',
+			href: '/tools/color-converter',
+			icon: '🎨'
+		},
+		{
+			name: 'Test Data Generator',
+			description: 'Generate placeholder text, random names, emails, phone numbers, and addresses for app testing.',
+			href: '/tools/test-data-generator',
+			icon: '🧪'
 		}
 	];
 </script>
