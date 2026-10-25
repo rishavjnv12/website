@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { tilt, scramble } from '$lib/actions';
 	const achievements = [
 		{
 			icon: '>>',
@@ -63,13 +64,13 @@
 	<div class="section-wrapper" use:observeVisibility>
 		<div class="section-header">
 			<span class="section-number">04</span>
-			<h2>ACHIEVEMENT<span class="dot">_</span>UNLOCKED</h2>
+			<h2 use:scramble>ACHIEVEMENT<span class="dot">_</span>UNLOCKED</h2>
 			<div class="header-line"></div>
 		</div>
 
 		<div class="achievements-grid">
 			{#each achievements as a, i}
-				<div class="achievement-card" style="--accent: {a.color}; animation-delay: {i * 0.1}s">
+				<div use:tilt class="achievement-card" style="--accent: {a.color}; animation-delay: {i * 0.1}s">
 					<div class="ach-icon">{a.icon}</div>
 					<div class="ach-content">
 						<h3>{a.title}</h3>
@@ -170,7 +171,7 @@
 		position: relative;
 		overflow: hidden;
 		transition: all 0.3s ease;
-		animation: slideUp 0.5s ease both;
+		animation: slideUp 0.5s ease backwards;
 		clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 0 100%);
 	}
 
@@ -249,7 +250,7 @@
 	.edu-item {
 		display: flex;
 		gap: 1.5rem;
-		animation: slideUp 0.5s ease both;
+		animation: slideUp 0.5s ease backwards;
 	}
 
 	.edu-marker {

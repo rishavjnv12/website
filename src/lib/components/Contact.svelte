@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { scramble } from '$lib/actions';
 	let messageSent = $state(false);
 
 	function handleCall() {
@@ -33,7 +34,7 @@
 	<div class="section-wrapper" use:observeVisibility>
 		<div class="section-header">
 			<span class="section-number">05</span>
-			<h2>ESTABLISH<span class="dot">_</span>CONNECTION</h2>
+			<h2 use:scramble>ESTABLISH<span class="dot">_</span>CONNECTION</h2>
 			<div class="header-line"></div>
 		</div>
 

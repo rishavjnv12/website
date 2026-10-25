@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { magnetic } from '$lib/actions';
+
+	let content: HTMLDivElement;
 
 	let typedText = $state('');
 	const fullText = 'iOS Developer';
@@ -20,7 +23,17 @@
 			showCursor = !showCursor;
 		}, 530);
 
+		// Parallax: tilt the whole hero block with the pointer
+		const parallax = (e: PointerEvent) => {
+			const x = e.clientX / innerWidth - 0.5;
+			const y = e.clientY / innerHeight - 0.5;
+			content.style.transform = `perspective(1000px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translate3d(${x * -20}px, ${y * -20}px, 0)`;
+		};
+		const canHover = !matchMedia('(hover: none), (prefers-reduced-motion: reduce)').matches;
+		if (canHover) window.addEventListener('pointermove', parallax);
+
 		return () => {
+			window.removeEventListener('pointermove', parallax);
 			clearInterval(typeInterval);
 			clearInterval(cursorInterval);
 		};
@@ -28,7 +41,7 @@
 </script>
 
 <section id="hero">
-	<div class="hero-content">
+	<div class="hero-content" bind:this={content}>
 		<!-- HUD corner brackets -->
 		<div class="hud-corners">
 			<div class="hud-corner tl"></div>
@@ -60,11 +73,11 @@
 		<p class="tagline">Building pixel-perfect native experiences at <a href="https://www.temple.com/" target="_blank" rel="noopener noreferrer" class="highlight cyber-link">Temple</a></p>
 
 		<div class="cta-group">
-			<a href="#contact" class="cta-primary">
+			<a use:magnetic href="#contact" class="cta-primary">
 				<span class="cta-text">INITIATE_CONTACT</span>
 				<span class="cta-arrow">&rarr;</span>
 			</a>
-			<a href="#experience" class="cta-secondary">VIEW_LOGS</a>
+			<a use:magnetic href="#experience" class="cta-secondary">VIEW_LOGS</a>
 		</div>
 
 		<div class="scroll-indicator">
@@ -220,6 +233,8 @@
 		text-align: center;
 		position: relative;
 		z-index: 1;
+		transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+		will-change: transform;
 	}
 
 	.pre-title {

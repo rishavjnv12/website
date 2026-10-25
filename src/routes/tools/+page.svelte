@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { tilt } from '$lib/actions';
 	import { onMount } from 'svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
@@ -74,7 +75,7 @@
 
 		<div class="grid">
 			{#each tools as t (t.name)}
-				<a href={t.href} class="card">
+				<a use:tilt href={t.href} class="card">
 					<span class="card-icon">{t.icon}</span>
 					<h3>{t.name}</h3>
 					<p>{t.description}</p>

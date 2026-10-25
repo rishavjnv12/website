@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { tilt, scramble } from '$lib/actions';
 	import { onMount } from 'svelte';
 
 	let visible = $state(false);
@@ -20,7 +21,7 @@
 	<div class="section-wrapper" class:visible>
 		<div class="section-header">
 			<span class="section-number">01</span>
-			<h2>ABOUT<span class="dot">_</span>ME</h2>
+			<h2 use:scramble>ABOUT<span class="dot">_</span>ME</h2>
 			<div class="header-line"></div>
 		</div>
 
@@ -56,22 +57,22 @@
 			</div>
 
 			<div class="about-stats">
-				<div class="stat-card">
+				<div use:tilt class="stat-card">
 					<div class="stat-value">3+</div>
 					<div class="stat-label">YEARS_EXP</div>
 					<div class="stat-bar"><div class="stat-fill" style="width: 75%"></div></div>
 				</div>
-				<div class="stat-card">
+				<div use:tilt class="stat-card">
 					<div class="stat-value">1000+</div>
 					<div class="stat-label">DSA_SOLVED</div>
 					<div class="stat-bar"><div class="stat-fill magenta" style="width: 90%"></div></div>
 				</div>
-				<div class="stat-card">
+				<div use:tilt class="stat-card">
 					<div class="stat-value">SDE-2</div>
 					<div class="stat-label">CURRENT_LEVEL</div>
 					<div class="stat-bar"><div class="stat-fill yellow" style="width: 60%"></div></div>
 				</div>
-				<div class="stat-card">
+				<div use:tilt class="stat-card">
 					<div class="stat-value">B.Tech</div>
 					<div class="stat-label">EDUCATION</div>
 					<div class="stat-bar"><div class="stat-fill" style="width: 100%"></div></div>

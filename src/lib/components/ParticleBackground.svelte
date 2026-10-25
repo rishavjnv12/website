@@ -85,6 +85,9 @@
 
 		const fontSize = 14;
 		let frame = 0;
+		const mouse = { x: -9999, y: -9999 };
+		const onMouse = (e: PointerEvent) => { mouse.x = e.clientX; mouse.y = e.clientY; };
+		window.addEventListener('pointermove', onMouse);
 
 		const animate = () => {
 			frame++;
@@ -92,9 +95,12 @@
 
 			ctx.font = `${fontSize}px 'Share Tech Mono', monospace`;
 
+			// Rain goes into a frenzy in overdrive mode
+			const boost = document.documentElement.classList.contains('overdrive') ? 6 : 1;
+
 			// Draw digital rain
 			for (const drop of columns) {
-				drop.y += drop.speed;
+				drop.y += drop.speed * boost;
 				drop.charUpdateTimer--;
 
 				if (drop.charUpdateTimer <= 0) {
@@ -133,6 +139,14 @@
 			// Draw particles with glow
 			ctx.shadowBlur = 10;
 			for (const p of particles) {
+				// Drift away from the pointer
+				const mdx = p.x - mouse.x;
+				const mdy = p.y - mouse.y;
+				const md = Math.hypot(mdx, mdy);
+				if (md < 140 && md > 0) {
+					p.x += (mdx / md) * (1 - md / 140) * 3;
+					p.y += (mdy / md) * (1 - md / 140) * 3;
+				}
 				p.x += p.vx;
 				p.y += p.vy;
 
@@ -149,6 +163,20 @@
 				ctx.fill();
 			}
 			ctx.shadowBlur = 0;
+
+			// Link particles near the pointer to it
+			ctx.lineWidth = 0.6;
+			for (const p of particles) {
+				const d = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+				if (d < 180) {
+					ctx.globalAlpha = 0.25 * (1 - d / 180);
+					ctx.strokeStyle = '#ff2a6d';
+					ctx.beginPath();
+					ctx.moveTo(mouse.x, mouse.y);
+					ctx.lineTo(p.x, p.y);
+					ctx.stroke();
+				}
+			}
 
 			// Draw connections between nearby particles
 			ctx.lineWidth = 0.5;
@@ -178,6 +206,7 @@
 			cancelAnimationFrame(animationId);
 			window.removeEventListener('resize', resize);
 			window.removeEventListener('resize', initRain);
+			window.removeEventListener('pointermove', onMouse);
 		};
 	});
 </script>

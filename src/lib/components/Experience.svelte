@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { scramble } from '$lib/actions';
 	import { onMount } from 'svelte';
 
 	let visible = $state(false);
@@ -72,7 +73,7 @@
 	<div class="section-wrapper" class:visible use:observeVisibility>
 		<div class="section-header">
 			<span class="section-number">02</span>
-			<h2>EXPERIENCE<span class="dot">_</span>LOG</h2>
+			<h2 use:scramble>EXPERIENCE<span class="dot">_</span>LOG</h2>
 			<div class="header-line"></div>
 		</div>
 

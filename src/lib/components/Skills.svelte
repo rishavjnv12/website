@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { tilt, scramble } from '$lib/actions';
 	const skillCategories = [
 		{
 			title: 'LANGUAGES',
@@ -62,13 +63,13 @@
 	<div class="section-wrapper" use:observeVisibility>
 		<div class="section-header">
 			<span class="section-number">03</span>
-			<h2>SKILL<span class="dot">_</span>MATRIX</h2>
+			<h2 use:scramble>SKILL<span class="dot">_</span>MATRIX</h2>
 			<div class="header-line"></div>
 		</div>
 
 		<div class="skills-grid">
 			{#each skillCategories as category, catIdx}
-				<div class="skill-card" style="animation-delay: {catIdx * 0.15}s">
+				<div use:tilt class="skill-card" style="animation-delay: {catIdx * 0.15}s">
 					<div class="card-header">
 						<span class="card-icon">{category.icon}</span>
 						<h3>{category.title}</h3>
@@ -156,7 +157,7 @@
 		padding: 1.5rem;
 		position: relative;
 		transition: all 0.4s ease;
-		animation: slideUp 0.6s ease both;
+		animation: slideUp 0.6s ease backwards;
 	}
 
 	@keyframes slideUp {

@@ -153,3 +153,28 @@ a:not(.cyber-link):hover {
 	85%  { filter: brightness(1.4); }
 	100% { filter: brightness(1.5) drop-shadow(0 0 5px currentColor); }
 }
+
+/* ─── Overdrive mode (Konami code / command palette) ──────────────────────── */
+/* Filter on the root element so fixed-position children keep the viewport as containing block */
+html.overdrive {
+	animation: overdrive-hue 1.2s linear infinite;
+}
+
+html.overdrive main {
+	animation: overdrive-shake 0.25s steps(2) 12;
+}
+
+@keyframes overdrive-hue {
+	from { filter: hue-rotate(0deg) saturate(1.6); }
+	to { filter: hue-rotate(360deg) saturate(1.6); }
+}
+
+@keyframes overdrive-shake {
+	0% { transform: translate(3px, -2px); }
+	50% { transform: translate(-3px, 2px); }
+	100% { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html.overdrive, html.overdrive main { animation: none; }
+}
