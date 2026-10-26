@@ -13,28 +13,37 @@
 		let sparks: Spark[] = [];
 		let rings: Ring[] = [];
 		let raf = 0;
+		// Hard caps so rapid clicking can't pile up unbounded work per frame
+		const MAX_SPARKS = 400;
+		const MAX_RINGS = 12;
 
 		const resize = () => {
-			canvas.width = innerWidth * devicePixelRatio;
-			canvas.height = innerHeight * devicePixelRatio;
-			ctx.scale(devicePixelRatio, devicePixelRatio);
+			const dpr = Math.min(devicePixelRatio, 2);
+			canvas.width = innerWidth * dpr;
+			canvas.height = innerHeight * dpr;
+			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 		};
 		resize();
 
 		const loop = () => {
 			ctx.clearRect(0, 0, innerWidth, innerHeight);
 			ctx.globalCompositeOperation = 'lighter';
+			ctx.lineCap = 'round';
+			// Glow is faked with a wide faint stroke under a thin bright one;
+			// shadowBlur is extremely slow in Chromium (Brave/Chrome) and stalls on rapid clicks
+			ctx.strokeStyle = '#00f0ff';
 
 			for (const r of rings) {
 				r.r += (120 - r.r) * 0.12;
 				r.life -= 0.035;
-				ctx.globalAlpha = Math.max(r.life, 0);
-				ctx.strokeStyle = '#00f0ff';
-				ctx.lineWidth = 2 * r.life;
-				ctx.shadowBlur = 20;
-				ctx.shadowColor = '#00f0ff';
+				const a = Math.max(r.life, 0);
 				ctx.beginPath();
 				ctx.arc(r.x, r.y, r.r, 0, Math.PI * 2);
+				ctx.globalAlpha = a * 0.25;
+				ctx.lineWidth = 8 * r.life;
+				ctx.stroke();
+				ctx.globalAlpha = a;
+				ctx.lineWidth = 2 * r.life;
 				ctx.stroke();
 			}
 
@@ -44,14 +53,16 @@
 				s.vx *= 0.94;
 				s.vy = s.vy * 0.94 + 0.15;
 				s.life -= 0.022;
-				ctx.globalAlpha = Math.max(s.life, 0);
+				const a = Math.max(s.life, 0);
 				ctx.strokeStyle = s.color;
-				ctx.shadowColor = s.color;
-				ctx.shadowBlur = 12;
-				ctx.lineWidth = 2;
 				ctx.beginPath();
 				ctx.moveTo(s.x, s.y);
 				ctx.lineTo(s.x - s.vx * 3, s.y - s.vy * 3);
+				ctx.globalAlpha = a * 0.3;
+				ctx.lineWidth = 6;
+				ctx.stroke();
+				ctx.globalAlpha = a;
+				ctx.lineWidth = 2;
 				ctx.stroke();
 			}
 
@@ -75,6 +86,8 @@
 					color: colors[(Math.random() * colors.length) | 0]
 				});
 			}
+			if (sparks.length > MAX_SPARKS) sparks.splice(0, sparks.length - MAX_SPARKS);
+			if (rings.length > MAX_RINGS) rings.splice(0, rings.length - MAX_RINGS);
 			if (!raf) raf = requestAnimationFrame(loop);
 		};
 
